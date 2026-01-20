@@ -1,4 +1,354 @@
+:root {
+    --bg: #0f0f10;
+    --panel: #161616;
+    --steel: #6a6a6a;
+    --lamp: #444;
+    --light: rgba(255, 255, 170, .55);
+    --accent: #00ff88;
+}
+
 * {
     padding: 0%;
-    margin: 0%;;
+    margin: 0%;
+    box-sizing: border-box
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    color: #fff;
+    font-family: system-ui, Segoe UI, Roboto, Arial;
+    overflow-x: hidden;
+}
+
+/*  Lamp  */
+.wrap {
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+    padding: 2rem;
+    flex-wrap: wrap
+}
+
+.lamp {
+    position: relative;
+    width: 200px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.shade {
+    width: 170px;
+    height: 110px;
+    background: var(--lamp);
+    border-radius: 90px 90px 22px 22px;
+    position: relative;
+    display: grid;
+    place-items: center
+}
+
+.shade::after {
+    position: absolute;
+    bottom: -34px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+}
+
+/* Eyes and mouths */
+
+.face {
+    position: absolute;
+    top: 40%;
+    width: 90px;
+    height: 48px;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.eyes,
+.mouth {
+    position: absolute;
+    inset: 0
+}
+
+.eyes-awake::before,
+.eyes-awake::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%
+}
+
+.eyes-awake::before {
+    left: 10px
+}
+
+.eyes-awake::after {
+    right: 10px
+}
+
+.eyes-sleep {
+    display: none
+}
+
+.eyes-sleep::before,
+.eyes-sleep::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    width: 20px;
+    height: 10px;
+    border-bottom: 3px solid #000;
+    border-radius: 0 0 20px 20px
+}
+
+.eyes-sleep::before {
+    left: 5px
+}
+
+.eyes-sleep::after {
+    right: 5px
+}
+
+.mouth-smile {
+    display: none
+}
+
+.mouth-smile::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 18px;
+    width: 40px;
+    height: 20px;
+    transform: translateX(-50%);
+    background: #000;
+    border-radius: 0 0 22px 22px
+}
+
+.mouth-smile::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 10px;
+    background: #f36;
+    border-radius: 50%
+}
+
+.mouth-sleep::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 23px;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 6px;
+    background: #000;
+    border-radius: 0 0 12px 12px
+}
+
+.mouth-cry {
+    display: none
+}
+
+.mouth-cry::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 26px;
+    transform: translateX(-50%) rotate(180deg);
+    width: 36px;
+    height: 18px;
+    border-top: 6px solid #000;
+    border-radius: 0 0 22px 22px
+}
+
+/* Light */
+
+.light {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 180px;
+    background: var(--light);
+    filter: blur(55px);
+    opacity: 0;
+    transition: opacity .45s ease
+}
+
+.stem {
+    width: 12px;
+    height: 118px;
+    background: var(--steel)
+}
+
+.base {
+    width: 110px;
+    height: 22px;
+    background: var(--steel);
+    border-radius: 50%;
+    margin-top: 0px
+}
+
+.cord {
+    position: absolute;
+    left: 40px;
+    top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer
+}
+
+.string {
+    width: 3px;
+    height: 40px;
+    background: #a9a9a9;
+    border-radius: 2px;
+    transform-origin: top;
+    transition: transform .15s
+}
+
+.knob {
+    width: 18px;
+    height: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .2);
+    transition: transform .15s ease
+}
+
+
+/* States */
+
+.lamp.on .shade {
+    background: #676b28;
+}
+
+.lamp.on .eyes-awake {
+    display: block
+}
+
+.lamp.on .eyes-sleep {
+    display: none
+}
+
+.lamp.on .mouth-smile {
+    display: block
+}
+
+.lamp.on .mouth-sleep {
+    display: none
+}
+
+.lamp.off .eyes-awake {
+    display: none
+}
+
+.lamp.off .eyes-sleep {
+    display: block
+}
+
+.lamp.off .mouth-smile {
+    display: none
+}
+
+.lamp.off .mouth-sleep {
+    display: block
+}
+
+.lamp.on .light {
+    opacity: 1
+}
+
+/* Login box */
+
+.login {
+    width: min(92vw, 340px);
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 2.4rem 2rem;
+    box-shadow: 0 0 26px rgba(0, 255, 136, .22);
+    transform: scale(.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .28s, opacity .28s, box-shadow .28s
+}
+
+.login.visible {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 0 40px rgba(255, 255, 170, .55);
+}
+
+h2 {
+    margin: 0 0 1.6rem;
+    text-align: center
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: .38rem;
+    margin-bottom: 1.1rem
+}
+
+.field span {
+    color: #aaa;
+    font-size: .92rem
+}
+
+.field input {
+    background: #222;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    padding: .8rem;
+    font-size: 1rem;
+    outline: none
+}
+
+.btn {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: .85rem;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.btn:active {
+    transform: translateY(1px)
+}
+
+.muted {
+    text-align: center;
+    margin: .9rem 0 0
+}
+
+.link {
+    color: #9a9a9a;
+    text-decoration: none
+}
+
+.link:hover {
+    color: #fff
 }

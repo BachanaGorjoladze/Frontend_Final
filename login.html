@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style_login.css">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style_login.css" />
 </head>
 <body>
-    <script src="index.js"></script>
+  <main class="wrap">
+    <!-- LAMP -->
+    <section class="lamp off" id="lamp" aria-live="polite">
+      <div class="shade">
+        <div class="face">
+          <div class="eyes eyes-awake"></div>
+          <div class="eyes eyes-sleep"></div>
+          <div class="mouth mouth-smile"></div>
+          <div class="mouth mouth-sleep"></div>
+        </div>
+        <div class="light"></div>
+      </div>
+
+      <div class="stem"></div>
+      <div class="base"></div>
+
+      <!-- Pull cord -->
+      <div class="cord" id="cord" role="button" tabindex="0">
+        <div class="string"></div>
+        <div class="knob" id="knob"></div>
+      </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section class="login" id="loginBox" aria-hidden="true">
+      <h2>Welcome Back</h2>
+
+      <label class="field">
+        <span>Username</span>
+        <input id="username" type="text" autocomplete="username" placeholder="Enter your username" />
+      </label>
+
+      <label class="field">
+        <span>Password</span>
+        <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" />
+      </label>
+
+      <button id="loginBtn" class="btn">Login</button>
+      <p class="muted"><a href="#" class="link">Forgot password?</a></p>
+    </section>
+  </main>
+
+  <script src="login.js" defer></script>
+
 </body>
 </html>
