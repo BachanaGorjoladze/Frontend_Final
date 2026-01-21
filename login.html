@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login Page</title>
   <link rel="stylesheet" href="style_login.css" />
 </head>
+
 <body>
   <main class="wrap">
     <!-- LAMP -->
@@ -31,25 +33,60 @@
     </section>
 
     <!-- LOGIN -->
+    <!-- FORMS CONTAINER -->
     <section class="login" id="loginBox" aria-hidden="true">
-      <h2>Welcome Back</h2>
 
-      <label class="field">
-        <span>Username</span>
-        <input id="username" type="text" autocomplete="username" placeholder="Enter your username" />
-      </label>
+      <!-- LOGIN FORM -->
+      <form id="loginForm">
+        <h2>Welcome Back</h2>
 
-      <label class="field">
-        <span>Password</span>
-        <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" />
-      </label>
+        <label class="field">
+          <span>Username</span>
+          <input name="username" type="text" autocomplete="username" placeholder="Enter your username" required />
+        </label>
 
-      <button id="loginBtn" class="btn">Login</button>
-      <p class="muted"><a href="#" class="link">Forgot password?</a></p>
+        <label class="field">
+          <span>Password</span>
+          <input name="password" type="password" autocomplete="current-password" placeholder="Enter your password"
+            required />
+        </label>
+
+        <button type="submit" class="btn">Login</button>
+        <p class="muted">
+          <span class="link" id="showRegister">Need an account? Register</span>
+        </p>
+      </form>
+
+      <!-- REGISTER FORM (Hidden by default) -->
+      <form id="registerForm" class="registerForm hidden">
+        <h2>Create Account</h2>
+
+        <label class="field">
+          <span>Email</span>
+          <input name="email" type="email" placeholder="Enter your email" required />
+        </label>
+
+        <label class="field">
+          <span>Username</span>
+          <input name="username" type="text" placeholder="Choose a username" required />
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input name="password" type="password" placeholder="Choose a password" minlength="6" required />
+        </label>
+
+        <button type="submit" class="btn">Register</button>
+        <p class="muted">
+          <span class="link" id="showLogin">Have an account? Login</span>
+        </p>
+      </form>
+
     </section>
   </main>
 
   <script src="login.js" defer></script>
 
 </body>
+
 </html>

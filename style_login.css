@@ -352,3 +352,11 @@ h2 {
 .link:hover {
     color: #fff
 }
+
+.hidden {
+    display: none;
+}
+
+.link {
+    cursor: pointer;
+}

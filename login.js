@@ -1,11 +1,13 @@
 const lamp = document.getElementById("lamp");
 const cord = document.getElementById("cord");
 const knob = document.getElementById("knob");
-const login = document.getElementById("loginBox");
-const username = document.getElementById("username");
-const loginBtn = document.getElementById("loginBtn");
+const loginBox = document.getElementById("loginBox");
 
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
 
+const showRegisterBtn = document.getElementById("showRegister");
+const showLoginBtn = document.getElementById("showLogin");
 
 const strng = cord.querySelector(".string");
 
@@ -17,20 +19,27 @@ function setOn(on) {
   if (on) {
     lamp.classList.remove("off");
     lamp.classList.add("on");
-    login.classList.add("visible");
+    loginBox.classList.add("visible");
   } else {
     lamp.classList.remove("on");
     lamp.classList.add("off");
-    login.classList.remove("visible");
+    loginBox.classList.remove("visible");
   }
 }
 
 function toggleLamp() {
   const isOn = lamp.classList.contains("on");
-
   setOn(!isOn);
-  if (!isOn) username.focus();
+
+  if (!isOn) {
+    if (!registerForm.classList.contains("hidden")) {
+      registerForm.querySelector("input[name='email']").focus();
+    } else {
+      loginForm.querySelector("input[name='username']").focus();
+    }
+  }
 }
+
 function startPull(y) {
   pulling = true;
   isDragging = false;
@@ -64,15 +73,66 @@ window.addEventListener("touchmove", e => movePull(e.touches[0].clientY), { pass
 window.addEventListener("touchend", () => finishPull(false));
 
 
-setOn(false);
+showRegisterBtn.addEventListener("click", () => {
+  loginForm.classList.add("hidden");
+  registerForm.classList.remove("hidden");
+});
 
-loginBtn.addEventListener("click", () => {
-  const u = username.value.trim();
-  const p = document.getElementById("password").value.trim();
-  if (!u || !p) {
-    login.animate(
-      [{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(6px)" }, { transform: "translateX(0)" }],
-      { duration: 200, iterations: 1 }
-    );
+showLoginBtn.addEventListener("click", () => {
+  registerForm.classList.add("hidden");
+  loginForm.classList.remove("hidden");
+});
+
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(loginForm);
+  const data = Object.fromEntries(formData);
+
+  if (data.username && data.password) {
+    console.log("Login Data:", data);
+    alert("No account found");
+  } else {
+    shakeBox();
   }
 });
+
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(registerForm);
+  const data = Object.fromEntries(formData);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!emailRegex.test(data.email)) {
+    alert("Please enter a valid email address.");
+    shakeBox();
+    return;
+  }
+
+  if (data.password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    shakeBox();
+    return;
+  }
+
+  if (data.email && data.username && data.password) {
+    console.log("Register Data:", data);
+    alert("Registration Successful!");
+    window.location.href = "index.html";
+  } else {
+    shakeBox();
+  }
+});
+
+function shakeBox() {
+  loginBox.animate(
+    [
+      { transform: "translateX(0)" },
+      { transform: "translateX(-6px)" },
+      { transform: "translateX(6px)" },
+      { transform: "translateX(0)" }
+    ],
+    { duration: 200, iterations: 1 }
+  );
+}
+
+setOn(false);
