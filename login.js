@@ -116,6 +116,7 @@ registerForm.addEventListener("submit", (e) => {
 
   if (data.email && data.username && data.password) {
     console.log("Register Data:", data);
+    localStorage.setItem("username", data.username);
     alert("Registration Successful!");
     window.location.href = "index.html";
   } else {

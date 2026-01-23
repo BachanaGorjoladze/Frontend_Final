@@ -1,13 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_main.css">
-    <title>Document</title>
+    <title>Book Store</title>
 </head>
+
 <body>
-    
+
+    <header>
+        <div class="logo">BOOK<span style="color:white">STORE</span></div>
+        <div class="header-actions">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <button class="cart-btn" id="cartBtn">🛒</button>
+            <div class="user-bubble" id="userBubble"></div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="sign-container">
+            <div class="sign">Special Offers</div>
+        </div>
+
+        <div class="bookshelf-container" id="shelf-1">
+            <div class="shelf"></div>
+        </div>
+
+        <div class="sign-container">
+            <div class="sign">What's New</div>
+        </div>
+
+        <div class="bookshelf-container" id="shelf-2">
+            <div class="shelf"></div>
+        </div>
+
+        <div class="sign-container" style="margin-top: 3rem;">
+            <div class="sign" style="width: 80%; background: #222; color: white; border-color: var(--accent);">
+                Free Shipping on orders over $50
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <section class="footer-col">
+            <h3>Information</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Delivery Information</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </section>
+        <section class="footer-col">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </section>
+        <section class="footer-col">
+            <h3>Extras</h3>
+            <ul>
+                <li><a href="#">Brands</a></li>
+                <li><a href="#">Gift Vouchers</a></li>
+                <li><a href="#">Affiliates</a></li>
+            </ul>
+        </section>
+        <section class="footer-col">
+            <h3>My Account</h3>
+            <ul>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Order History</a></li>
+                <li><a href="#">Wish List</a></li>
+            </ul>
+        </section>
+    </footer>
+
     <script src="index.js"></script>
 </body>
+
 </html>
