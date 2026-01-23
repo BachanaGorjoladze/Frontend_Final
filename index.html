@@ -11,37 +11,65 @@
 <body>
 
     <header>
-        <div class="logo">BOOK<span style="color:white">STORE</span></div>
-        <div class="header-actions">
-            <input type="text" class="search-bar" placeholder="Search...">
-            <button class="cart-btn" id="cartBtn">🛒</button>
+        <div class="logo">BOOK<span class="logo-store">STORE</span></div>
+        <nav class="header-actions">
+            <search class="search-wrapper">
+                <input type="search" class="search-bar" id="searchBar" placeholder="Search...">
+                <div id="searchResults" class="search-results"></div>
+            </search>
+            <div class="cart-wrapper">
+                <button class="cart-btn" id="cartBtn">🛒 <span class="cart-count" id="cartCount">(0)</span></button>
+                <aside class="cart-dropdown" id="cartDropdown">
+                    <div id="cartItems"></div>
+                    <div class="cart-footer">
+                        <div class="cart-total-row"><span>Subtotal:</span> <span id="cartSubtotal">$0.00</span></div>
+                        <div class="cart-total-row"><span>Shipping:</span> <span id="cartShipping">$0.00</span></div>
+                        <div class="cart-total-row cart-final-total"><span>Total:</span> <span
+                                id="cartTotal">$0.00</span></div>
+                        <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+                    </div>
+                </aside>
+            </div>
+            <button class="theme-btn" id="themeBtn">☀️</button>
             <div class="user-bubble" id="userBubble"></div>
-        </div>
+        </nav>
     </header>
+
+    <div id="notificationArea"></div>
+
+    <div id="orderHistoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order History</h2>
+                <button class="modal-close" id="closeOrderHistory">✕</button>
+            </div>
+            <div id="orderHistoryContent" class="modal-body"></div>
+        </div>
+    </div>
 
     <main>
 
-        <div class="sign-container">
-            <div class="sign">Special Offers</div>
-        </div>
+        <section class="sign-container">
+            <h2 class="sign">Classic literature</h2>
+        </section>
 
-        <div class="bookshelf-container" id="shelf-1">
+        <article class="bookshelf-container" id="shelf-1">
             <div class="shelf"></div>
-        </div>
+        </article>
 
-        <div class="sign-container">
-            <div class="sign">What's New</div>
-        </div>
+        <section class="sign-container">
+            <h2 class="sign">Special offers</h2>
+        </section>
 
-        <div class="bookshelf-container" id="shelf-2">
+        <article class="bookshelf-container" id="shelf-2">
             <div class="shelf"></div>
-        </div>
+        </article>
 
-        <div class="sign-container" style="margin-top: 3rem;">
-            <div class="sign" style="width: 80%; background: #222; color: white; border-color: var(--accent);">
+        <section class="sign-container promotion-section">
+            <p class="sign promotion-sign">
                 Free Shipping on orders over $50
-            </div>
-        </div>
+            </p>
+        </section>
 
     </main>
 
@@ -74,7 +102,7 @@
             <h3>My Account</h3>
             <ul>
                 <li><a href="#">My Account</a></li>
-                <li><a href="#">Order History</a></li>
+                <li><a href="#" id="orderHistoryBtn">Order History</a></li>
                 <li><a href="#">Wish List</a></li>
             </ul>
         </section>
